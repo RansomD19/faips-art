@@ -30,15 +30,16 @@ async def test(ctx):
     channel = bot.get_channel(878585302053183498)
 
     pins = await channel.pins()
-    art = pins[0].attachments[0]  # the work of art
-    artist = pins[0].author  # the artist
+    for pin in pins:
+        art = pin.attachments  # the work of art
+        artist = pin.author  # the artist
 
-    added_data = {"name": str(artist),
-                  "image": str(art),
-                  "avatar": str(artist.display_avatar)
-                  }
+        added_data = {"name": str(artist),
+                      "image": str(art),
+                      "avatar": str(artist.display_avatar)
+                      }
 
-    write_json(added_data)
+        write_json(added_data)
     # for pin in pins:
     # if pin.attachments != []:
     # print(pin.attachments[0])

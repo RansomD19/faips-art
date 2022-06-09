@@ -5,7 +5,6 @@
     grid-template-rows: auto;
     gap: 10px;
     grid-template-areas:
-        "gallery-p gallery-p gallery-p gallery-p"
         "gallery-h2 gallery-h2 gallery-h2 gallery-h2"
         "img1 img2 img3 img4 "
         "img5 img6 img3 img7 "
