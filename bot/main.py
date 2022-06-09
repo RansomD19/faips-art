@@ -1,38 +1,47 @@
-import discord
-import mysql.connector
-from discord.ext import commands
+import json
+import nextcord
+from nextcord.ext import commands, tasks
+from dotenv import load_dotenv
+import os
+import json
 
-token = "OTgxMjA5ODY2NjcwNjAwMjYy.GMebX4.1HR3tkrcEIlXB5cPY-XTwS6xiqOG2nd5bE1_So"
-client = commands.Bot(command_prefix='.')
+
+def write_json(new_data, filename='img.json'):
+    with open(filename, 'r+') as file:
+        file_data = json.load(file)
+        file_data["gallery_data"].append(new_data)
+        file.seek(0)
+        json.dump(file_data, file, indent=4)
 
 
-@client.event
+load_dotenv()
+TOKEN = os.getenv("dsc_token")
+
+bot = commands.Bot(command_prefix='.')
+
+
+@bot.event
 async def on_ready():
-    print("Bot ready")
-    global ping
-    ping = f"{format(round(client.latency, 1))}ms"
-    print(ping)
+    print('ready')
 
 
-@client.command()
-async def ping(ctx):
-    ping = f"{format(round(client.latency, 1))}ms"
-    print(ping)
-    await ctx.send(ping)
+@bot.command(aliases=['verify'])
+async def test(ctx):
+    channel = bot.get_channel(878585302053183498)
 
-# @client.event
-# async def on_private_channel_pins_update(channel=817405524684308514, last_pin=None):
-#     pins_list = await pins()
-#     await channel.send()
-
-
-@client.command()
-async def test(ctx, index):
-    channel = client.get_channel(817405524684308514)
     pins = await channel.pins()
-    pins_count = len(pins)
-    print(pins_count)
-    await channel.send(f"{pins[int(index)].attachments.url} \n {pins[int(index)]}\n{pins_count}")
+    art = pins[0].attachments[0]  # the work of art
+    artist = pins[0].author  # the artist
+
+    added_data = {"name": str(artist),
+                  "image": str(art),
+                  "avatar": str(artist.display_avatar)
+                  }
+
+    write_json(added_data)
+    # for pin in pins:
+    # if pin.attachments != []:
+    # print(pin.attachments[0])
 
 
-client.run(token)
+bot.run(TOKEN)
