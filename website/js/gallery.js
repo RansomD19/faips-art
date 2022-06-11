@@ -96,3 +96,12 @@ function changeImg(changeDir) {
 
     }
 }
+
+
+// Fetching the Json file 
+// JS object notation
+fetch("bot/img.json")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data["gallery_data"][0]["image"])
+    })
