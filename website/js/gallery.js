@@ -106,7 +106,7 @@ fetch("bot/img.json")
         console.log(data["gallery_data"][0]["image"])
 
         //gettin the online image
-        var div = document.getElementById('box');
+        var div = document.getElementsByClassName('box');
         div.innerHTML = '';
 
         for (i = 0; i <= data['gallery_data'].length - 1; i++) {
@@ -119,11 +119,14 @@ fetch("bot/img.json")
             a.setAttribute("href", `${data.gallery_data[i].image}`)
             a.appendChild(img);
 
+
             var divRight = document.createElement("div");
             divRight.setAttribute("class", `gallery-img img${i}`)
             divRight.appendChild(a);
 
-            div.appendChild(a)
+            div[0].appendChild(divRight)
+
+
         }
     })
 

@@ -43,7 +43,7 @@
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -63,13 +63,15 @@
     border-bottom: 3px solid #222;
 }
 
-.container .box {
+.container .box>div {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     /* align-items: center; */
 
 }
+
 
 
 .container .box .gallery-img {
