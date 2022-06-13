@@ -106,19 +106,24 @@ fetch("bot/img.json")
         console.log(data["gallery_data"][0]["image"])
 
         //gettin the online image
-        var div = document.getElementById('index-gallery');
+        var div = document.getElementById('box');
         div.innerHTML = '';
 
         for (i = 0; i <= data['gallery_data'].length - 1; i++) {
 
+
             var img = document.createElement("img");
             img.src = data.gallery_data[i].image;
 
+            var a = document.createElement("a")
+            a.setAttribute("href", `${data.gallery_data[i].image}`)
+            a.appendChild(img);
+
             var divRight = document.createElement("div");
             divRight.setAttribute("class", `gallery-img img${i}`)
-            divRight.appendChild(img);
+            divRight.appendChild(a);
 
-            div.appendChild(divRight);
+            div.appendChild(a)
         }
     })
 
