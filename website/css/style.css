@@ -90,7 +90,7 @@ footer {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.img1 img:first-child:hover {
+.gallery-img img:hover {
     opacity: 0.6;
     transform: all ease-in-out 1000ms;
 }
