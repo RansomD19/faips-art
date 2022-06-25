@@ -63,7 +63,7 @@
     border-bottom: 3px solid #222;
 }
 
-.container .box>div {
+.container .box div {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
