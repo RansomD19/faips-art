@@ -1,8 +1,14 @@
+.body {
+    background-image: url("bg.jpeg");
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
 
 /* Page Styling */
 #header-main nav {
@@ -40,6 +46,20 @@
     text-transform: uppercase;
 }
 
+.container .heading {
+    /* width: 50%; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5%
+}
+
+.container .heading h2 {
+    font-size: 3em;
+    font-weight: bolder;
+    border-bottom: 3px solid #222;
+}
+
 .box {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -51,4 +71,28 @@
     width: 100%;
     padding-bottom: 15px;
     border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.gallery-img img:hover {
+    opacity: 0.6;
+    transform: all ease-in-out 1000ms;
+}
+
+@media only screen and (max-width:769px) {
+    .box {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        grid-gap: 10px;
+    }
+
+    .container .heading h2 {
+        font-size: 1em;
+    }
 }
