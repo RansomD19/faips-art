@@ -110,6 +110,7 @@ fetch("bot/img.json")
         div.innerHTML = '';
 
         for (i = 0; i <= data['gallery_data'].length - 1; i++) {
+            // for (i = 0; i <= 6; i++) {
 
 
             var img = document.createElement("img");
